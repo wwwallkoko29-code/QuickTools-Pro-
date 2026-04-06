@@ -3,17 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Age Calculator - QuickTools Pro</title>
-<meta name="description" content="Calculate your exact age online for free. Fast and easy age calculator tool.">
+<title>Accurate Age Calculator - QuickTools Pro</title>
+<meta name="description" content="Calculate your exact age with years, months, and days online for free. Accurate age calculator tool.">
 <style>
-body{font-family:Arial;background:#0f172a;color:white;text-align:center;padding:20px}
-input{padding:10px;border-radius:6px;border:none;margin-top:10px;}
-button{margin-top:10px;padding:10px;background:#3b82f6;color:white;border:none;border-radius:6px;cursor:pointer;}
-a{color:#3b82f6;display:block;margin:20px;}
+body {
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+input {
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    margin-top: 10px;
+}
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+#result {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+a {
+    color: #3b82f6;
+    display: block;
+    margin-top: 30px;
+    text-decoration: none;
+}
 </style>
 </head>
 <body>
-<h1>Age Calculator</h1>
+<h1>Accurate Age Calculator</h1>
+<p>Enter your birth date:</p>
 <input type="date" id="birthdate"><br>
 <button onclick="calcAge()">Calculate Age</button>
 <p id="result"></p>
@@ -22,11 +52,33 @@ a{color:#3b82f6;display:block;margin:20px;}
 <a href="index.html">Home</a>
 
 <script>
-function calcAge(){
-let b=new Date(document.getElementById("birthdate").value);
-let t=new Date();
-let age=t.getFullYear()-b.getFullYear();
-document.getElementById("result").innerText="Age: "+age;
+function calcAge() {
+    let birth = new Date(document.getElementById("birthdate").value);
+    let today = new Date();
+
+    if (!birth || birth > today) {
+        document.getElementById("result").innerText = "Enter a valid birth date";
+        return;
+    }
+
+    let years = today.getFullYear() - birth.getFullYear();
+    let months = today.getMonth() - birth.getMonth();
+    let days = today.getDate() - birth.getDate();
+
+    if (days < 0) {
+        months -= 1;
+        // أيام الشهر السابق
+        let lastMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+        days += lastMonth.getDate();
+    }
+
+    if (months < 0) {
+        years -= 1;
+        months += 12;
+    }
+
+    document.getElementById("result").innerText = 
+        years + " years, " + months + " months, " + days + " days";
 }
 </script>
 </body>
