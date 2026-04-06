@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Text Converter - QuickTools Pro</title>
+<meta name="description" content="Convert text to uppercase or lowercase online easily. Free text converter tool.">
+<style>
+body{font-family:Arial;background:#0f172a;color:white;text-align:center;padding:20px}
+input{width:90%;padding:10px;border-radius:6px;border:none;margin-top:10px;}
+button{margin-top:10px;padding:10px;background:#3b82f6;color:white;border:none;border-radius:6px;cursor:pointer;}
+a{color:#3b82f6;display:block;margin:20px;}
+</style>
+</head>
+<body>
+<h1>Text Converter</h1>
+<input id="textInput" placeholder="Enter text"><br>
+<button onclick="toUpper()">UPPERCASE</button>
+<button onclick="toLower()">lowercase</button>
+<p id="result"></p>
+
+<!-- رابط Home -->
+<a href="index.html">Home</a>
+
+<script>
+function toUpper(){document.getElementById("result").innerText=document.getElementById("textInput").value.toUpperCase();}
+function toLower(){document.getElementById("result").innerText=document.getElementById("textInput").value.toLowerCase();}
+</script>
+</body>
+</html>
