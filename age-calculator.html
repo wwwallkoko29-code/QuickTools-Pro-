@@ -48,10 +48,12 @@ a {
 <button onclick="calcAge()">Calculate Age</button>
 <p id="result"></p>
 
-<!-- رابط Home -->
+<!-- Home Link -->
 <a href="index.html">Home</a>
 
 <script>
+const monthsEnglish = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
 function calcAge() {
     let birth = new Date(document.getElementById("birthdate").value);
     let today = new Date();
@@ -67,7 +69,6 @@ function calcAge() {
 
     if (days < 0) {
         months -= 1;
-        // أيام الشهر السابق
         let lastMonth = new Date(today.getFullYear(), today.getMonth(), 0);
         days += lastMonth.getDate();
     }
