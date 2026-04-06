@@ -13,7 +13,7 @@ body {
     text-align: center;
     padding: 30px;
 }
-input {
+input, select {
     padding: 10px;
     border-radius: 6px;
     border: none;
@@ -44,42 +44,64 @@ a {
 <body>
 <h1>Accurate Age Calculator</h1>
 <p>Enter your birth date:</p>
-<input type="date" id="birthdate"><br>
+
+<!-- اختر اليوم والشهر والسنة لتجنب مشاكل اللغة -->
+<select id="day">
+<option value="">Day</option>
+<script>for(let d=1;d<=31;d++){document.write('<option value="'+d+'">'+d+'</option>');}</script>
+</select>
+
+<select id="month">
+<option value="">Month</option>
+<script>
+const months=["January","February","March","April","May","June","July","August","September","October","November","December"];
+for(let i=0;i<months.length;i++){document.write('<option value="'+i+'">'+months[i]+'</option>');}
+</script>
+</select>
+
+<select id="year">
+<option value="">Year</option>
+<script>
+let today=new Date();let currentYear=today.getFullYear();
+for(let y=currentYear;y>=1900;y--){document.write('<option value="'+y+'">'+y+'</option>');}
+</script>
+</select><br>
+
 <button onclick="calcAge()">Calculate Age</button>
 <p id="result"></p>
 
-<!-- Home Link -->
 <a href="index.html">Home</a>
 
 <script>
-const monthsEnglish = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+function calcAge(){
+    let day=parseInt(document.getElementById("day").value);
+    let month=parseInt(document.getElementById("month").value);
+    let year=parseInt(document.getElementById("year").value);
 
-function calcAge() {
-    let birth = new Date(document.getElementById("birthdate").value);
-    let today = new Date();
-
-    if (!birth || birth > today) {
-        document.getElementById("result").innerText = "Enter a valid birth date";
+    if(isNaN(day)||isNaN(month)||isNaN(year)){
+        document.getElementById("result").innerText="Enter valid birth date";
         return;
     }
 
-    let years = today.getFullYear() - birth.getFullYear();
-    let months = today.getMonth() - birth.getMonth();
-    let days = today.getDate() - birth.getDate();
+    let birth=new Date(year,month,day);
+    let today=new Date();
 
-    if (days < 0) {
-        months -= 1;
-        let lastMonth = new Date(today.getFullYear(), today.getMonth(), 0);
-        days += lastMonth.getDate();
+    let years=today.getFullYear()-birth.getFullYear();
+    let months=today.getMonth()-birth.getMonth();
+    let days=today.getDate()-birth.getDate();
+
+    if(days<0){
+        months-=1;
+        let lastMonth=new Date(today.getFullYear(),today.getMonth(),0);
+        days+=lastMonth.getDate();
     }
 
-    if (months < 0) {
-        years -= 1;
-        months += 12;
+    if(months<0){
+        years-=1;
+        months+=12;
     }
 
-    document.getElementById("result").innerText = 
-        years + " years, " + months + " months, " + days + " days";
+    document.getElementById("result").innerText=years+" years, "+months+" months, "+days+" days";
 }
 </script>
 </body>
