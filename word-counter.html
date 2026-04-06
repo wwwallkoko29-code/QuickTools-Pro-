@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Word Counter - QuickTools Pro</title>
+<meta name="description" content="Count words online for free. Fast and accurate word counter tool.">
+<style>
+body{font-family:Arial;background:#0f172a;color:white;text-align:center;padding:20px}
+textarea{width:90%;height:150px;padding:10px;border-radius:6px;border:none;margin-top:10px;}
+button{margin-top:10px;padding:10px;background:#3b82f6;color:white;border:none;border-radius:6px;cursor:pointer;}
+a{color:#3b82f6;display:block;margin:20px}
+</style>
+</head>
+<body>
+<h1>Word Counter</h1>
+<textarea id="text" placeholder="Type or paste text here..."></textarea><br>
+<button onclick="count()">Count Words</button>
+<p id="result"></p>
+
+<!-- رابط Home -->
+<a href="index.html">Home</a>
+
+<script>
+function count(){
+let t=document.getElementById("text").value.trim();
+let w=t?t.split(/\s+/).length:0;
+document.getElementById("result").innerText="Words: "+w;
+}
+</script>
+</body>
+</html>
