@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Character Counter - QuickTools Pro</title>
+<meta name="description" content="Count characters online easily. Fast and free character counter tool.">
+<style>
+body{font-family:Arial;background:#0f172a;color:white;text-align:center;padding:20px}
+textarea{width:90%;height:150px;padding:10px;border-radius:6px;border:none;margin-top:10px;}
+button{margin-top:10px;padding:10px;background:#3b82f6;color:white;border:none;border-radius:6px;cursor:pointer;}
+a{color:#3b82f6;display:block;margin:20px}
+</style>
+</head>
+<body>
+<h1>Character Counter</h1>
+<textarea id="text"></textarea><br>
+<button onclick="count()">Count Characters</button>
+<p id="result"></p>
+
+<!-- رابط Home -->
+<a href="index.html">Home</a>
+
+<script>
+function count(){
+let t=document.getElementById("text").value;
+document.getElementById("result").innerText="Characters: "+t.length;
+}
+</script>
+</body>
+</html>
