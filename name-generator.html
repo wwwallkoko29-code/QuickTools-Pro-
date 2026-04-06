@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Random Name Generator - QuickTools Pro</title>
+<meta name="description" content="Generate random names instantly online for free. Fun and easy name generator tool.">
+<style>
+body{font-family:Arial;background:#0f172a;color:white;text-align:center;padding:20px}
+button{margin-top:10px;padding:10px;background:#3b82f6;color:white;border:none;border-radius:6px;cursor:pointer;}
+a{color:#3b82f6;display:block;margin:20px;}
+</style>
+</head>
+<body>
+<h1>Random Name Generator</h1>
+<button onclick="generateName()">Generate Name</button>
+<p id="result"></p>
+
+<!-- رابط Home -->
+<a href="index.html">Home</a>
+
+<script>
+function generateName(){
+let names=["Alex","Leo","Max","Noah","Liam","Ethan","Olivia","Emma","Ava","Sophia"];
+document.getElementById("result").innerText=names[Math.floor(Math.random()*names.length)];
+}
+</script>
+</body>
+</html>
